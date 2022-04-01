@@ -84,10 +84,14 @@ app.post('/api/notes', (req, res) => {
     // set id based on what the next index of the array will be
     req.body.id = notes.length.toString();
 
-    // add notes to json file and notes array in this function
-    const note = createNewNote(req.body, notes);
-
-    res.json(note); // access data on the server side and do something with it
+    // if any data in req.body is incorrect, send 400 error back
+    if (!validateNote(req.body)) {
+        res.status(400).send('The note is not properly formatted.');
+    } else {
+        // add notes to json file and notes array in this function
+        const note = createNewNote(req.body, notes);
+        res.json(note); // access data on the server side and do something with it
+    }
 });
 
 app.listen(PORT, () => {
