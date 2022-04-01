@@ -81,11 +81,26 @@ app.get('/api/notes/:id', (req, res) => {
     res.json(result);
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+    const result = findById(req.params.id, notes);
+    
+    if (result === -1) return res.status(404).json({});
+
+    notes.splice(result, 1);
+    res.json(notes);
+});
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
+
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
+});
+
+// wildcard, all unkwon routes will be redirected back to the homepage
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.post('/api/notes', (req, res) => {

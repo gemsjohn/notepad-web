@@ -1,39 +1,19 @@
 {
   "notes": [
     {
-      "id": "0",
+      "title": "Grape",
+      "text": "Purple or Green\n",
+      "id": "8"
+    },
+    {
       "title": "Apple",
-      "text": "Red"
+      "text": "Red",
+      "id": "1"
     },
     {
-      "id": "1",
-      "title": "Banana",
-      "text": "Yellow"
-    },
-    {
-      "id": "2",
-      "title": "Carrot",
-      "text": "Orange"
-    },
-    {
-      "id": "3",
       "title": "Orange",
-      "text": "Orange"
-    },
-    {
-      "id": "4",
-      "title": "Strawberry",
-      "text": "Red"
-    },
-    {
-      "id": "5",
-      "title": "Fig",
-      "text": "Green"
-    },
-    {
-      "title": "Fig",
-      "text": "Green",
-      "id": "6"
+      "text": "Orange",
+      "id": "2"
     }
   ]
 }
