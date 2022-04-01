@@ -1,4 +1,7 @@
 const express = require('express');
+
+const PORT = prcess.env.PORT || 3001;
+
 const app = express();
 
 const { notes } = require('./data/notes');
@@ -12,7 +15,7 @@ function filterByQuery(query, notesArray) {
         } else {
             noteTextArray = query.noteText;
         }
-        noteTextArray.forEach(notes => {
+        noteTextArray.forEach(note => {
             filteredResults = filteredResults.filter(note => note.noteText.indexOf(text) !== -1);
         });
     }
@@ -33,6 +36,6 @@ app.get('/api/notes', (req, res) => {
     res.json(results);
 });
 
-app.listen(3001, () => {
-    console.log(`API Server now on port 3001!`);
+app.listen(PORT, () => {
+    console.log(`API Server now on port ${PORT}!`);
 });
