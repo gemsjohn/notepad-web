@@ -1,29 +1,34 @@
 {
-    "notes": [
-      {
-        "id": "1",
-        "title": "Apple",
-        "text": "Red"
-      },
-      {
-        "id": "2",
-        "title": "Banana",
-        "text": "Yellow"
-      },
-      {
-        "id": "3",
-        "title": "Carrot",
-        "text": "Orange"
-      },
-      {
-        "id": "4",
-        "title": "Orange",
-        "text": "Orange"
-      },
-      {
-        "id": "5",
-        "title": "Strawberry",
-        "text": "Red"
-      }
-    ]
-  }
+  "notes": [
+    {
+      "id": "0",
+      "title": "Apple",
+      "text": "Red"
+    },
+    {
+      "id": "1",
+      "title": "Banana",
+      "text": "Yellow"
+    },
+    {
+      "id": "2",
+      "title": "Carrot",
+      "text": "Orange"
+    },
+    {
+      "id": "3",
+      "title": "Orange",
+      "text": "Orange"
+    },
+    {
+      "id": "4",
+      "title": "Strawberry",
+      "text": "Red"
+    },
+    {
+      "id": "5",
+      "title": "Fig",
+      "text": "Green"
+    }
+  ]
+}

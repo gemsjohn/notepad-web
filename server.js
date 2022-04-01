@@ -1,8 +1,15 @@
-const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
+const express = require('express');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+// parse incoming string or array data
+app.use(express.urlencoded({ extended: true })); // takes incoming POST data an converts it to key/value pairings
+// parse incoming JSON data
+app.use(express.json());
+
 
 const { notes } = require('./data/notes');
 
@@ -33,6 +40,27 @@ function findById(id, notesArray) {
     return result;
 };
 
+// Accepts the POST routes req.body value the array we want to add the data to
+function createNewNote(body, notesArray) {
+    const note = body;
+    notesArray.push(note);
+    fs.writeFileSync(
+        path.join(__dirname, './data/notes.json'),
+        JSON.stringify({ notes: notesArray }, null, 2) // null: dont edit any of the exisiting data, 2: create white space
+    );
+    return note;
+}
+
+function validateNote(note) {
+    if (!note.title || typeof note.title !== 'string') {
+        return false;
+    }
+    if (!note.text || typeof note.text !== 'string') {
+        return false;
+    }
+    return true;
+}
+
 app.get('/api/notes', (req, res) => {
     let results = notes;
     if (req.query) {
@@ -50,6 +78,16 @@ app.get('/api/notes/:id', (req, res) => {
         res.send(404);
     }
     res.json(result);
+});
+
+app.post('/api/notes', (req, res) => {
+    // set id based on what the next index of the array will be
+    req.body.id = notes.length.toString();
+
+    // add notes to json file and notes array in this function
+    const note = createNewNote(req.body, notes);
+
+    res.json(note); // access data on the server side and do something with it
 });
 
 app.listen(PORT, () => {
